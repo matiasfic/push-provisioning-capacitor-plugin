@@ -16,11 +16,23 @@ public class PushProvisioningCapacitorPluginPlugin: CAPPlugin {
     
     @objc func isPaired(_ call: CAPPluginCall) {
         guard let lastFour = call.getString("cardLastFour") else {
-            call.reject("Missing required parameters")
+            call.reject("Missing cardLastFour parameter")
             return
         }
+
         call.resolve([
             "paired": isCardPaired(lastFour: lastFour)
+        ])
+    }
+    
+    @objc func getCardUrl(_ call: CAPPluginCall) {
+        guard let lastFour = call.getString("cardLastFour") else {
+            call.reject("Missing cardLastFour parameter")
+            return
+        }
+        
+        call.resolve([
+            "url": getCard(lastFour: lastFour)?.passURL?.absoluteString ?? NSNull()
         ])
     }
     
@@ -89,17 +101,19 @@ public class PushProvisioningCapacitorPluginPlugin: CAPPlugin {
     }
     
     private func isCardPaired(lastFour: String) -> Bool {
-        // Retrieve a list of payment passes associated with the device
+        return getCard(lastFour: lastFour) != nil
+    }
+    
+    private func getCard(lastFour: String) -> PKPass? {
         let passes = PKPassLibrary().passes()
-
-        // Check if any of the passes have the same suffix as the provided cardSuffix
+    
         for pass in passes {
-            if let suffix = pass.paymentPass?.primaryAccountIdentifier, suffix == lastFour {
-                return true
+            if pass.localizedDescription == "Fiwind" && pass.paymentPass?.primaryAccountNumberSuffix == lastFour {
+                return pass;
             }
         }
-
-        return false
+        
+        return nil
     }
     
 }

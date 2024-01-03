@@ -15,6 +15,7 @@ npx cap sync
 
 * [`isAvailable()`](#isavailable)
 * [`isPaired(...)`](#ispaired)
+* [`getCardUrl(...)`](#getcardurl)
 * [`startEnroll(...)`](#startenroll)
 * [`completeEnroll(...)`](#completeenroll)
 
@@ -45,6 +46,21 @@ isPaired(options: { cardLastFour: string; }) => Promise<{ paired: boolean; }>
 | **`options`** | <code>{ cardLastFour: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ paired: boolean; }&gt;</code>
+
+--------------------
+
+
+### getCardUrl(...)
+
+```typescript
+getCardUrl(options: { cardLastFour: string; }) => Promise<{ url: string | null; }>
+```
+
+| Param         | Type                                   |
+| ------------- | -------------------------------------- |
+| **`options`** | <code>{ cardLastFour: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ url: string | null; }&gt;</code>
 
 --------------------
 

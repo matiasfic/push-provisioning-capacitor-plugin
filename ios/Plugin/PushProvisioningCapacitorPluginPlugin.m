@@ -6,6 +6,7 @@
 CAP_PLUGIN(PushProvisioningCapacitorPluginPlugin, "PushProvisioningCapacitorPlugin",
            CAP_PLUGIN_METHOD(isAvailable, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(isPaired, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(getCardUrl, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(startEnroll, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(completeEnroll, CAPPluginReturnPromise);
 )

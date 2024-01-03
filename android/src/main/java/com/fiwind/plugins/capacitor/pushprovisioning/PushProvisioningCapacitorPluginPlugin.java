@@ -26,6 +26,14 @@ public class PushProvisioningCapacitorPluginPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void getCardUrl(PluginCall call) {
+        // FIXME: Not implemented
+        JSObject ret = new JSObject();
+        ret.put("url", null);
+        call.resolve(ret);
+    }
+
+    @PluginMethod
     public void startEnroll(PluginCall call) {
         call.reject("startEnroll() is not implemented yet");
     }
