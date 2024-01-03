@@ -1,6 +1,6 @@
 {
   "name": "@matiasfic/push-provisioning-capacitor-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Push provisioning Capacitor plugin for both Google Pay and Apple Pay support",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
